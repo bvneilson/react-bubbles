@@ -44,6 +44,8 @@ const ColorList = ({ colors, updateColors }) => {
       console.log(res);
       //*** Ask TL about better solution here ***//
       updateColors(colors.map(color => color.id === colorToEdit.id ? res.data : color));
+      setColorToEdit(initialColor);
+      setEditing(false);
     }).then(err => {
       console.error(err);
     })
@@ -115,7 +117,7 @@ const ColorList = ({ colors, updateColors }) => {
       )}
       {/* stretch - build another form here to add a color */}
       <form onSubmit={addColor}>
-        <legend>add color</legend>
+        <legend>add new color</legend>
         <label>
           color name:
           <input
